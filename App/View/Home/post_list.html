@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Docyment</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <%list.forEach(function(item){%>
+            <li>
+                <h3><a href="/post/detail?id=<%=item.id%>"><%=item.title%></a></h3>
+                <%=item.content%>
+            </li>
+        <%})%>
+    </ul>
+<button onclick="add()">add</button>
+</body>
+<script>
+    function add(){
+        $.post("/post/add",
+                {
+                    title:"Donald Duck",
+                    content:"Duckburg"
+                },
+                function(data,status){
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+    }
+</script>
+</html>
